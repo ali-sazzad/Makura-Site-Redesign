@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Theme tokens. `white` and `ink` are swapped in light mode, so every
+   text-white/*, border-white/*, bg-white/* and bg-ink/* utility flips automatically. */
+@theme {
+  --color-ink: #07070d;
+  --color-white: #f5f3ee;
+  --color-crimson: #ff2e4d;
+  --color-gold: #ffb347;
+}
+
+@theme inline {
+  --font-display: var(--nf-display), Georgia, serif;
+  --font-sans: var(--nf-sans), system-ui, sans-serif;
+  --font-mono: var(--nf-mono), ui-monospace, monospace;
+}
+
+html[data-theme="light"] {
+  --color-ink: #f6f2ea;
+  --color-white: #0d0d16;
+  --color-gold: #c26a00;
+  --color-crimson: #e0112f;
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-ink);
+  color: var(--color-white);
+  scroll-behavior: auto;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+}
+
+html, body, header, section { transition: background-color 0.4s ease, color 0.4s ease; }
+
+html.lenis, html.lenis body { height: auto; }
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+@media (pointer: fine) {
+  body, a, button { cursor: none; }
+}
+
+::selection { background: var(--color-crimson); color: #fff; }
+
+.marquee { animation: marquee 38s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+.scroll-dot { animation: scrolldot 1.8s cubic-bezier(.7,0,.3,1) infinite; }
+@keyframes scrolldot { 0% { transform: translateY(-100%); } 100% { transform: translateY(260%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee, .scroll-dot { animation: none; }
+}
