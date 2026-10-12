@@ -1,6 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
+
+const FINE = "(pointer: fine)";
+const subscribeFine = (cb: () => void) => {
+  const mq = window.matchMedia(FINE);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+};
 
 export default function Cursor() {
   const x = useMotionValue(-100);
@@ -8,10 +15,9 @@ export default function Cursor() {
   const sx = useSpring(x, { stiffness: 500, damping: 40 });
   const sy = useSpring(y, { stiffness: 500, damping: 40 });
   const [big, setBig] = useState(false);
-  const [fine, setFine] = useState(false);
+  const fine = useSyncExternalStore(subscribeFine, () => window.matchMedia(FINE).matches, () => false);
 
   useEffect(() => {
-    setFine(window.matchMedia("(pointer: fine)").matches);
     const move = (e: PointerEvent) => {
       x.set(e.clientX);
       y.set(e.clientY);
