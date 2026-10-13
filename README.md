@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Makura Creations: website redesign
 
-## Getting Started
+A motion-first redesign of the [Makura Creations](https://makuracreations.com) site, a full-stack digital studio in Lalitpur, Nepal. One long page that introduces the studio, its services and its client work, built to feel cinematic without getting in the way of the content.
 
-First, run the development server:
+- **Live site:** https://makura-site.vercel.app
+- **Mirror on GitHub Pages:** https://ali-sazzad.github.io/Makura-Site-Redesign/
+
+![Makura home page: "Connecting ideas digitally." over a field of flowing woven threads](.github/screenshots/home-desktop.png)
+
+<img src=".github/screenshots/home-mobile.png" alt="Home page on a phone" width="260">
+
+## Tech stack
+
+- Next.js 16 (App Router) with React 19 and TypeScript
+- Tailwind CSS 4
+- GSAP 3 with ScrollTrigger
+- Three.js, choreographed with Theatre.js
+- Motion (`motion/react`), anime.js and Lenis
+
+## Motion
+
+| Where | What | Built with |
+| --- | --- | --- |
+| Hero background | A woven field of coloured threads. Camera, twist and colour are keyframed in a Theatre.js sequence that scrolling scrubs through | Three.js, Theatre.js, ScrollTrigger |
+| Services | On desktop the six services scroll sideways while the section stays pinned. Phones get a stacked layout instead | GSAP `matchMedia`, ScrollTrigger (pin + scrub), `ServicesMobile` |
+| Work | Client cards tilt toward the cursor with spring physics | Motion (`useSpring`, `useTransform`) |
+| Voices | Client quotes rotate every six seconds | Motion (`AnimatePresence`) |
+| About | The studio's stat counters count up | anime.js |
+| Whole page | Smooth, inertial scrolling | Lenis |
+| Cursor | A custom cursor, only on devices with a fine pointer | `matchMedia` |
+
+The Three.js scene checks `prefers-reduced-motion`. Light and dark themes are available from the header toggle.
+
+## Sections
+
+Hero, client marquee, Services, Work, About, Voices (testimonials), Contact. Client work links through to the matching case study on makuracreations.com.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run lint    # ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+- **Vercel** builds the app as a normal Next.js project.
+- **GitHub Pages** is deployed by `.github/workflows/pages.yml` on every push to `main`. Setting `GITHUB_PAGES=true` switches `next.config.ts` to a static export served from the `/Makura-Site-Redesign` base path.
 
-To learn more about Next.js, take a look at the following resources:
+## Project layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/          layout, page, global styles, icons
+components/   Hero, Services, Work, About, Voices, Contact, ThreadScene, Cursor, Nav, ...
+lib/          theatre.ts (the Theatre.js scroll sequence)
+public/work/  client case-study images
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Credits
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Redesign and build by [Sazzad Ali](https://github.com/ali-sazzad). Client names, logos and quotes belong to their owners and are used here as a portfolio demonstration.
