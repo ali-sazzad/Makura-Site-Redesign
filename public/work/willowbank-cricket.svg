@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Willowbank Cricket Club (fictitious sample)">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="240" cy="220" r="260" fill="#fff" fill-opacity=".10"/>
+  <circle cx="980" cy="620" r="180" fill="#000" fill-opacity=".12"/>
+  <rect x="150" y="470" width="520" height="150" rx="24" fill="#fff" fill-opacity=".18"/>
+  <rect x="150" y="150" width="300" height="26" rx="13" fill="#fff" fill-opacity=".35"/>
+  <rect x="150" y="196" width="200" height="26" rx="13" fill="#fff" fill-opacity=".22"/>
+  <text x="150" y="740" font-family="Georgia, serif" font-size="44" fill="#fff" fill-opacity=".85">Sample project, fictitious</text>
+</svg>

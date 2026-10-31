@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Lumen Pay (fictitious sample)">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6d28d9"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="330" cy="340" r="260" fill="#fff" fill-opacity=".10"/>
+  <circle cx="920" cy="620" r="180" fill="#000" fill-opacity=".12"/>
+  <rect x="150" y="470" width="520" height="150" rx="24" fill="#fff" fill-opacity=".18"/>
+  <rect x="150" y="150" width="360" height="26" rx="13" fill="#fff" fill-opacity=".35"/>
+  <rect x="150" y="196" width="280" height="26" rx="13" fill="#fff" fill-opacity=".22"/>
+  <text x="150" y="740" font-family="Georgia, serif" font-size="44" fill="#fff" fill-opacity=".85">Sample project, fictitious</text>
+</svg>
